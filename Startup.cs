@@ -52,7 +52,6 @@ namespace BlockedPowerFULL
             }
 
             app.UseCors("VueCorsPolicy");
-            app.UseAuthentication();
             app.UseMvc();
             app.UseRouting();
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
