@@ -5,12 +5,25 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="CalcData\**" />
+    <Content Remove="CalcData\**" />
+    <EmbeddedResource Remove="CalcData\**" />
+    <None Remove="CalcData\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.2" />
     <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="5.0.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.2" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="5.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="SpreadsheetGear" Version="8.5.4" />
+    <PackageReference Include="System.Text.Encoding.CodePages" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="C:\C# progs\DIPLOM-develop\LockedPowerLibrary\LockedPowerLibrary.csproj" />
   </ItemGroup>
 
 </Project>
