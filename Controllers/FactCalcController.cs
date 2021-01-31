@@ -27,7 +27,8 @@ namespace BlockedPowerFULL.Controllers
             @"E:\Programms\Diploma\BlockedPowerFULL\calcParams.txt";
 
         [HttpGet]
-        public async Task<JsonResult> GetData()
+        [Route("BlockedPowerValue")]
+        public async Task<JsonResult> GetBlockedPowerValue()
         {
             int hour = 0;
 
@@ -98,20 +99,20 @@ namespace BlockedPowerFULL.Controllers
                     sections[sections.IndexOf(section) - 1].valueOfPowerFlow) : 0);
             }
 
-            var sumBlockedPower =
-                Math.Round(sections.Sum(x => x.valueOfBlockedPower), 2);
+            BlockedPowerReport.WriteToExcel(systems, sections);
 
-            return Json(sumBlockedPower.ToString());
+            return Json(Math.Round(sections.Sum(x => x.valueOfBlockedPower),
+                2).ToString());
         }
 
         [HttpGet]
-        public async Task GetReport()
+        [Route("ReserveValue")]
+        public JsonResult GetReserveValue()
         {
-            using (StreamWriter sw = new StreamWriter(_path,
-                false, System.Text.Encoding.Default))
-            {
-                await sw.WriteLineAsync(value);
-            }
+            var systems =
+                ESystem.GetParameters("balance10-04-03-2020.xlsx");
+            return Json(Math.Round(systems.Sum(x => x.getValueOfPowerReserve),
+                2).ToString());
         }
 
         [HttpPost]
